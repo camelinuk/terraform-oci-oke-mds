@@ -38,10 +38,10 @@ resource oci_containerengine_node_pool pool1 {
     size = "2"
   }
 
-  node_shape_config {
-        memory_in_gbs = var.node_shape_memory
-        ocpus = var.node_shape_ocpus
-  }
+#  node_shape_config {
+#        memory_in_gbs = var.node_shape_memory
+#        ocpus = var.node_shape_ocpus
+#  }
   
   node_source_details {
     
