@@ -7,14 +7,14 @@ import os,sys,base64,subprocess,re
 
 import oci
           
-compartment_id  = '${compartment_id}'
-region          = '${region}'
-email_address   = '${email_address}'
-region_registry = '${region_registry}'
-secret_id       = '${secret_id}'
-secret_name     = '${secret_name}'
+compartment_id       = '${compartment_id}'
+region               = '${region}'
+email_address        = '${email_address}'
+region_registry      = '${region_registry}'
+secret_id            = '${secret_id}'
+secret_name          = '${secret_name}'
 tenancy_namespace    = '${tenancy_namespace}'
-username        = '${username}'
+username             = '${username}'
 
 signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
 
@@ -39,7 +39,6 @@ try:
     os.system(delsecret)
 
     crtsecret = ("kubectl create secret docker-registry ${secret_name} -n default --docker-server=${region_registry} --docker-username=${tenancy_namespace}/${username} --docker-email=${email_address} --docker-password=%s" % secret_content)
-
     subprocess.call(["/bin/bash" , "-c" , crtsecret])
  
 except Exception as e:
